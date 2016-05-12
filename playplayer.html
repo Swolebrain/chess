@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/chessboard-0.3.0.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script src="js/chess.js"></script>
+<script src="js/chessboard-0.3.0.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/json3.min.js"></script>
+<script src="js/playplayer.js"></script>
+
+<meta charset="utf-8">
+<title>Birdfood Robot</title>
+</head>
+
+<body>
+	<h1 style="width: 600px; margin-left:100px">BirdFoot Robot</h1>
+    <div id="board" style="width: 600px; margin:10px 0px 50px 100px;"> 
+    </div>
+    
+    <div class="row" style="margin-left:50px; margin-top:50px;">
+        <div class="col-xs-5">
+            <textarea id="textarea" rows="60" cols="60" ></textarea>
+        </div>
+        <div class="col-xs-4 text-left">
+            Put your play data in the Text area. Use this format:<br>
+            <strong>src-dest h:m:s.ms</strong>
+            <br>OR<br>
+            <strong>FEN h:m:s.ms</strong><br><br>
+            Notes:<br>
+            <span style="font-size:75%">
+            *Use only the beginning part of the FEN, don't include any state info<br>
+            *Castling notation (use this for castling instead of src-dest): <br>
+            <ul><li>wO-O for white kingside, wO-OO for white queenside</li>
+            <li>bO-O for black kingside, bO-OO for black queenside</li></ul>
+            </span>
+            
+            <div id="load-btn" class="btn" style="width:350px;margin-top:15px">Click here to load data</div>
+            <div id="run-btn" class="btn" style="width:350px;margin-top:15px">Click here to run sequence</div>
+            <div id="run-output"></div>
+        </div>
+    </div>
+    
+	<script>
+    playerInit();
+    </script>
+</body>
+</html>

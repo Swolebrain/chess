@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chess Memory</title>
+<script src="js/soundmanager2.js"></script>
+<script>
+/*window.ding1 = new Audio("sounds/ding.mp3");
+window.buzz1 = new Audio("sounds/buzz.mp3");
+window.win = new Audio("sounds/party.mp3");
+window.lose = new Audio("sounds/scream-no.mp3");*/
+var advSound = false;
+var smLoaded = false;
+soundManager.setup({
+	url : 'swf/',
+	preferFlash : false,
+	flashVersion : 9,
+	debugMode: false,
+	onready : function(){
+		window.ding1 = soundManager.createSound({ url: 'sounds/ding.mp3', autoLoad : true });
+		window.buzz1 = soundManager.createSound({ url: 'sounds/buzz.mp3', autoLoad : true });
+		window.win = soundManager.createSound({ url: 'sounds/party.mp3', autoLoad : true });
+		window.lose = soundManager.createSound({ url: 'sounds/scream-no.mp3', autoLoad : true });
+		smLoaded = true;
+		//window.ding1.play();
+	},
+	
+});
+
+</script>
+<!--<script src="js/mySoundManager.js"></script>-->
+<script src="js/json3.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/chess.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/chessboard-0.3.0.js"></script>
+<script src="js/openingGenerator.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/main.js"></script>
+<script src="js/loadPlays.js"></script>
+<link rel="stylesheet" type="text/css" href="css/chessboard-0.3.0.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+	<div class="row text-center">
+    	<div class="col-xs-12">
+	    	<h1 id="playName">Training Room - Memorize Openings! v 1.0.6 now with clicking</h1>
+        </div>
+    </div> <!-- TITLE ROW -->
+    <div class="row">
+      <img src="img/youwin.png" id="youWinImg">
+      <img src="img/youlose.png" id="youLoseImg">
+      <div class="col-xs-3 col-md-3 text-right" id="play-selection-col">
+        <h3>Select an opening to load:</h3>
+      </div>
+      
+      <div class="col-xs-6 col-md-6 text-center" id="mailCol">
+      	  <img src="img/check.png" id="checkMark">
+      	  <img src="img/redx.png" id="redX">
+	      <div id="board"></div> 
+          <div style="margin-top:25px" class="text-center">
+                <div class="btn" id="viewOpening">View Opening</div>
+                <div class="btn" id="backToTraining" style="display:none;">Training Room</div>
+                <div class="btn" id="startOver">Let me Try</div>
+                <div class="btn" id="startGameMode">Game Mode</div>
+          </div>
+      </div> <!-- BOARD -->
+      
+      <div class="col-xs-3 col-md-3">
+        <div class="options">
+            <p>Choose playback speed while viewing the play:</p>
+            <!--<div class="tiny-text" style="float:left;display:inline;margin-right:5%;">(faster)</div>-->
+            
+                <!--<input style="float:left;" id="speed-slider" type="range" value="0.5" min="0.5" max="2.0" step="0.5" oninput="setMoveSpeed()">
+                <div class="tiny-text" style="float:right;display:inline;margin-right:15%;">(slower)</div>
+                <div id="speed-value" style="text-align:center;clear:both;margin-right:20px;"></div>-->
+                <span class="tiny-text">
+                <input type="radio" id="slow-radio" name="speed" value="slow" >Slow
+                <input type="radio" id="medium-radio" name="speed" value="medium" >Medium 
+                <input type="radio" id="fast-radio" name="speed" value="fast" checked>Fast </span> 
+                <br><br>
+                Choose your play color:<br>
+                <span class="tiny-text">
+                <input type="radio" id="white-radio" name="boardColor" value="white" checked>White 
+                <input type="radio" id="black-radio" name="boardColor" value="black">Black
+                </span>
+                <span class='btn-small' id="startOver2">Apply</span>
+        </div>
+        <canvas id="canvas-feedback" width="200" height="300"></canvas>
+      </div>
+    </div>
+    <!--<div class="row">
+    	<div class="col-xs-12  text-center">
+            <div style="margin-top:25px">
+                <a href="#" class="btn" id="viewOpening">View Opening</a>
+                <a href="#" class="btn" id="startOver">Let me Try</a>
+            </div>
+            <div id = "feedback"></div>
+        </div>
+    </div>-->
+    
+  </div>
+<script>
+start();
+</script>
+
+</body>
+</html>
